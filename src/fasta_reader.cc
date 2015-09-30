@@ -13,7 +13,7 @@
 
 namespace hhc {
 
-FastaReader::FastaReader(char* input_fp, int world_size, int world_rank)
+FastaReader::FastaReader(const char* input_fp, int world_size, int world_rank)
     : input_fp_(input_fp),
       world_size_(world_size),
       world_rank_(world_rank) {}

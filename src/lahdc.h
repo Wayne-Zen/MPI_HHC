@@ -16,6 +16,8 @@ class LAHDC {
  public:  
   LAHDC(std::vector<std::string>& reads,
         std::vector<ClusterIndex>& assignments, 
+        int kmer,
+        int cluster_size_threshold,
         int world_size, 
         int world_rank);
   void run(Logger &logger);
@@ -148,6 +150,7 @@ class LAHDC {
   int world_size_;
   int world_rank_;
   int max_cluster_label_;
+  int cluster_size_threshold_;
   KmerDistance kmer_distance;
   };
 
