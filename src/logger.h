@@ -30,6 +30,18 @@ class Logger {
     log << std::endl;
   }
 
+  void show_vector_oneline(
+      std::string header,
+      std::vector<ReadLocation>& vect);
+
+  void show_vector_oneline(
+    std::string header,
+    std::vector<ReadInfo>& vect);
+
+  void show_vector_oneline(
+    std::string header,
+    std::vector< std::vector<std::string> >& vect);
+
   template <typename T_key, typename T>
   void show_vmap_multiline(std::string header,
                            std::map< T_key, std::vector<T> >& vmap) {
@@ -66,20 +78,6 @@ class Logger {
   const static int kHeaderWidth = 30;
 };
 
-template <>
-void Logger::show_vector_oneline<ReadLocation>(
-    std::string header,
-    std::vector<ReadLocation>& vect);
-
-template <>
-void Logger::show_vector_oneline<ReadInfo>(
-    std::string header,
-    std::vector<ReadInfo>& vect);
-
-template <>
-void Logger::show_vector_oneline< std::vector<std::string> >(
-    std::string header,
-    std::vector< std::vector<std::string> >& vect);
 }
 
 #endif

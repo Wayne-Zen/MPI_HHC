@@ -46,8 +46,7 @@ void Logger::greet() {
       << world_size_ << " ###" << std::endl; 
 }
 
-template<>
-void Logger::show_vector_oneline<ReadLocation>(
+void Logger::show_vector_oneline(
     std::string header,
     std::vector<ReadLocation>& vect) {
   log << std::left << std::setw(kHeaderWidth) 
@@ -64,8 +63,7 @@ void Logger::show_vector_oneline<ReadLocation>(
   log << std::endl;
 }
 
-template<>
-void Logger::show_vector_oneline<ReadInfo>(
+void Logger::show_vector_oneline(
     std::string header,
     std::vector<ReadInfo>& vect) {
   log << std::left << std::setw(kHeaderWidth) 
@@ -84,8 +82,7 @@ void Logger::show_vector_oneline<ReadInfo>(
   log << std::endl;
 }
 
-template<>
-void Logger::show_vector_oneline< std::vector<std::string> >(
+void Logger::show_vector_oneline(
     std::string header,
     std::vector< std::vector<std::string> >& vect) {
   log << std::left << std::setw(kHeaderWidth) 

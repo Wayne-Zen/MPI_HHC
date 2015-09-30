@@ -1,2 +1,1 @@
-#!/bin/bash
-mpirun -n 4 ./bin/hhc data/2000_derep.fa
+time mpirun -n 4 ./bin/hhc -i data/S1_derep.fa

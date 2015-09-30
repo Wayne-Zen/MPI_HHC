@@ -23,11 +23,14 @@ namespace hhc {
 
 LAHDC::LAHDC(std::vector<std::string>& reads,
              std::vector<ClusterIndex>& assignments, 
+             int kmer,
+             int cluster_size_threshold,
              int world_size, 
              int world_rank)
     : reads_(reads), assignments_(assignments), 
       world_size_(world_size), world_rank_(world_rank),
-      kmer_distance(KmerDistance(6)) {
+      cluster_size_threshold_(cluster_size_threshold),
+      kmer_distance(KmerDistance(kmer)) {
   max_cluster_label_ = 0;
   srand(0);
 }
@@ -64,7 +67,7 @@ void LAHDC::get_splitting_cluster(
                 MPI_COMM_WORLD);
   for (std::vector<ClusterIndex>::size_type i = 0;
        i != ready_cluster_vect.size(); ++i) {
-    if (read_cnt_hist_global[i] > 100) {
+    if (read_cnt_hist_global[i] > cluster_size_threshold_) {
       splitting_cluster_vect.push_back(ready_cluster_vect[i]);
       std::vector<ClusterIndex> splitted_clusters;
       splitted_clusters.push_back(++max_cluster_label_);
